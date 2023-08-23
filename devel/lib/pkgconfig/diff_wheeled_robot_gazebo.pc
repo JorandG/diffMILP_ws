@@ -1,8 +1,0 @@
-prefix=/home/jorand/diff_ws/devel
-
-Name: diff_wheeled_robot_gazebo
-Description: Description of diff_wheeled_robot_gazebo
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
