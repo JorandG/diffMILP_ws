@@ -1,4 +1,3 @@
-<?xml version="1.0" ?>
 <launch>
 
   <!-- these are the arguments you can pass this launch file, for example paused:=true -->
@@ -18,13 +17,17 @@
     <arg name="headless" value="$(arg headless)"/>
   </include>
 
-
-<!-- urdf xml robot description loaded on the Parameter Server-->  
+  <!-- Load robot description onto the parameter server -->
 
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
 
-  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <!-- Spawn the URDF robot in Gazebo -->
+
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-	args="-urdf -model diff_wheeled_robot -param robot_description"/> 
+    args="-urdf -model diff_wheeled_robot -param robot_description"/> 
+
+  <!-- Start posescript.py node -->
+
+  <node name="posescript_node" pkg="diff_wheeled_robot_gazebo" type="posescript.py" output="screen"/>
 
 </launch>
